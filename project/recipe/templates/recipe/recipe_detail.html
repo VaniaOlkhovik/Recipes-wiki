@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <img src="{{recipe.image.url}}" alt="" width="300" height="300">
+    <h3>{{ recipe.name }}</h3>
+    <p>{{ recipe.reciepe}}</p>
+    <h4>{{ recipe.category }}</h4>
+    <a href="{% url 'update_recipe' recipe.id %}">
+        <button>Update</button>
+    </a>
+
+    <form method = "post" action="{% url 'delete_recipe' recipe.id %}">
+        {% csrf_token%}
+        <button>Delete</button>
+    </form>
+{% endblock %}
